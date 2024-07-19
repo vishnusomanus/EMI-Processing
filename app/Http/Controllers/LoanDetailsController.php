@@ -11,12 +11,13 @@ class LoanDetailsController extends Controller
     public function __construct(LoanDetailService $loanDetailService)
     {
         $this->loanDetailService = $loanDetailService;
+        $this->middleware('auth');
     }
 
     public function index()
     {
         $loanDetails = $this->loanDetailService->getAllLoanDetails();
-        return view('loan_details.index', compact('loanDetails'));
+        return view('loan.index', compact('loanDetails'));
     }
 }
 

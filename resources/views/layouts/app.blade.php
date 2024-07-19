@@ -12,6 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <style>a.nav-link.active { border-bottom: 2px solid #0d6efd; }</style>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -30,7 +31,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('loan_details.index') ? 'active' : '' }}" href="{{ route('loan_details.index') }}">
+                                Loan Details
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('emi.process.page') ? 'active' : '' }}" href="{{ route('emi.process.page') }}">
+                                Process EMI Data
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('emi.show') ? 'active' : '' }}" href="{{ route('emi.show') }}">
+                                EMI
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -55,8 +70,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('emi_details.process.page') }}"> 
-                                    Process emi data
+                                    <a class="dropdown-item" href="{{ route('emi.process.page') }}"> 
+                                        Process EMI Data
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\LoanDetailService;
 
 class HomeController extends Controller
 {
@@ -11,8 +12,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    protected $loanDetailService;
+
+    public function __construct(LoanDetailService $loanDetailService)
     {
+        $this->loanDetailService = $loanDetailService;
         $this->middleware('auth');
     }
 
@@ -23,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $loanDetails = $this->loanDetailService->getAllLoanDetails();
+        return view('home', compact('loanDetails'));
     }
 }

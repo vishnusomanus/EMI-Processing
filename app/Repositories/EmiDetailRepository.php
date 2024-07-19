@@ -1,23 +1,34 @@
 <?php
+
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class EmiDetailRepository 
 {
     public function all()
     {
-        return DB::table('emi_details')->get();
+        if (Schema::hasTable('emi_details')) {
+            return DB::table('emi_details')->get();
+        } else {
+            return collect();
+        }
     }
 
     public function create(array $data)
     {
-        return DB::table('emi_details')->insert($data);
+        if (Schema::hasTable('emi_details')) {
+            return DB::table('emi_details')->insert($data);
+        }
+        return false;
     }
 
     public function deleteAll()
     {
-        return DB::statement('DROP TABLE IF EXISTS emi_details');
+        if (Schema::hasTable('emi_details')) {
+            return DB::statement('DROP TABLE emi_details');
+        }
+        return false;
     }
 }
-
