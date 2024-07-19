@@ -23,14 +23,14 @@
                     </form>
 
                     <h3 class="mt-3">Loan Details</h3>
-                    <table class="table table-bordered">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Client ID</th>
-                                <th>Number of Payments</th>
-                                <th>First Payment Date</th>
-                                <th>Last Payment Date</th>
-                                <th>Loan Amount</th>
+                                <th scope="col">Client ID</th>
+                                <th scope="col">Number of Payments</th>
+                                <th scope="col">First Payment Date</th>
+                                <th scope="col">Last Payment Date</th>
+                                <th scope="col">Loan Amount</th>
                             </tr>
                         </thead>
                         <tbody>
